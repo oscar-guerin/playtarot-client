@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "playtarot-io": {
+      "hosting": {
+        "playtarot-client": [
+          "playtarot-io"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+<div class="hand-container d-flex">
+	<div *ngFor="let card of hand; let i = index"
+		 [@onload]="{value: load ? 'loaded' : 'unloaded', params: {offset: i * spacePerCard}}"
+		 class="hand-card">
+		<app-card (click)="play(card)"
+				  [card]="card"></app-card>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+.hand-container {
+	position: relative;
+	height: 239px;
+	width: 70vw;
+}
+
+.hand-card {
+	position: absolute;
+	z-index: auto;
+	transition: transform 0.2s ease-in-out;
+}
+
+.hand-card:hover {
+	z-index: 1000;
+	transform: translateY(-60px);
+}
+
+
+
+

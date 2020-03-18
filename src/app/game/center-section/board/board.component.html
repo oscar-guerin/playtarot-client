@@ -1,0 +1,21 @@
+<div class="container-fluid">
+	<div class="top-row d-flex justify-content-around">
+		<div *ngIf="northWestCard">
+			<app-card [card]="northWestCard"></app-card>
+		</div>
+		<div *ngIf="northEastCard">
+			<app-card [card]="northEastCard"></app-card>
+		</div>
+	</div>
+	<div class="middle-row d-flex justify-content-between">
+		<div *ngIf="westCard">
+			<app-card [card]="westCard"></app-card>
+		</div>
+		<div *ngIf="eastCard">
+			<app-card [card]="eastCard"></app-card>
+		</div>
+	</div>
+	<div *ngIf="southCard" class="bottom-row d-flex justify-content-center">
+		<app-card [card]="southCard"></app-card>
+	</div>
+</div>

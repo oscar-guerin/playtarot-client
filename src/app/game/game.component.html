@@ -1,0 +1,32 @@
+<div class="container-fluid">
+	<div class="row game-top d-flex justify-content-around">
+		<app-player [player]="northWestPlayer$ | async">
+		</app-player>
+		<app-player [player]="northEastPlayer$ | async">
+		</app-player>
+	</div>
+	<div class="row game-middle d-flex justify-content-between">
+		<app-player [player]="westPlayer$ | async">
+		</app-player>
+		<div>
+			<app-start (gameStart)="requestGameStart()"
+					   *ngIf="centerSectionContent === 'start'">
+			</app-start>
+			<app-board *ngIf="centerSectionContent === 'board'"
+					   [eastCard]="southCard$ | async"
+					   [northEastCard]="southCard$ | async"
+					   [northWestCard]="southCard$ | async"
+					   [southCard]="southCard$ | async"
+					   [westCard]="southCard$ | async">
+			</app-board>
+		</div>
+		<app-player [player]="eastPlayer$ | async">
+		</app-player>
+	</div>
+	<div class="row game-bottom justify-content-center">
+		<app-hand (played)="played($event)"
+				  [hand]="(hand$ | async)">
+		</app-hand>
+	</div>
+
+</div>

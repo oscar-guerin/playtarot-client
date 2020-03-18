@@ -1,0 +1,18 @@
+@import '~@angular/material/theming';
+@import 'palette';
+
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$ftio-primary: mat-palette($md-primary);
+$ftio-accent: mat-palette($md-secondary);
+
+// The warn palette is optional (defaults to red).
+$ftio-warn: mat-palette($mat-red);
+
+$ftio-theme: mat-light-theme($ftio-primary, $ftio-accent, $ftio-warn);
+
+@include angular-material-theme($ftio-theme);
+

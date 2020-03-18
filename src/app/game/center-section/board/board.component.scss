@@ -1,0 +1,22 @@
+.container-fluid {
+	position: relative;
+	width: 400px;
+	height: 100%;
+}
+
+.container-fluid > * {
+	position: absolute;
+	width: 100%;
+}
+
+.top-row {
+	top: 0;
+}
+
+.middle-row {
+	top: 75px;
+}
+
+.bottom-row {
+	top: 125px;
+}
