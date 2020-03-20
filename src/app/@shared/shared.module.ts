@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CoreModule } from '../@core/core.module';
+import { RouterModule } from '@angular/router';
 
 const EXPORTABLE_COMPONENTS: any[] = [
 	ToolbarComponent
@@ -14,7 +15,8 @@ const EXPORTABLE_COMPONENTS: any[] = [
 		EXPORTABLE_COMPONENTS
 	],
 	imports: [
-		CoreModule
+		CoreModule,
+		RouterModule
 	]
 })
 export class SharedModule {

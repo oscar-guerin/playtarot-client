@@ -1,5 +1,5 @@
 #header-wrapper {
-	height: 60%;
+	height: calc(100% - 64px);
 	width: 100%;
 	background: url("./../../../assets/home_background.png") no-repeat center center fixed;
 	-webkit-background-size: cover;

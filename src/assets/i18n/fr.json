@@ -1,6 +1,7 @@
 {
 	"HOME": {
-		"play": "Jouer"
+		"playAnonymous": "Jouer une partie rapide",
+		"trySignIn": "Ou connectez-vous pour gardez une trace de vos scores"
 	},
 	"GAME": {
 		"start": "Commencer la partie"
