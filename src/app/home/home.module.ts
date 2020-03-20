@@ -13,7 +13,7 @@ import { HomeRoutingModule } from './home-routing.module';
 	imports: [
 		CoreModule,
 		SharedModule,
-		HomeRoutingModule
+		HomeRoutingModule,
 	]
 })
 export class HomeModule {
