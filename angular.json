@@ -128,5 +128,10 @@
 			}
 		}
 	},
-	"defaultProject": "playtarot-client"
+	"defaultProject": "playtarot-client",
+	"schematics": {
+		"@schematics/angular:component": {
+			"styleext": "scss"
+		}
+	}
 }

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
-import { ToolbarComponent } from './toolbar/toolbar.component';
 import { CoreModule } from '../@core/core.module';
 import { RouterModule } from '@angular/router';
+import { FacebookConnectComponent } from './facebook-connect/facebook-connect.component';
 
 const EXPORTABLE_COMPONENTS: any[] = [
-	ToolbarComponent
+	FacebookConnectComponent
 ];
 
 @NgModule({
 	declarations: [
-		...EXPORTABLE_COMPONENTS
+		...EXPORTABLE_COMPONENTS,
 	],
 	exports: [
-		EXPORTABLE_COMPONENTS
+		...EXPORTABLE_COMPONENTS,
 	],
 	imports: [
 		CoreModule,

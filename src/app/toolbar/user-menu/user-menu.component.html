@@ -1,0 +1,18 @@
+<button [matMenuTriggerFor]="userMenu"
+        class="px-3 py-1"
+        mat-stroked-button>
+	<span class="pr-3">
+		{{ user.displayName }}
+	</span>
+	<img [src]="user.photoURL"
+	     alt="User avatar"
+	     height="35"
+	     width="35">
+</button>
+<mat-menu #userMenu>
+	<button (click)="authService.signOut()"
+	        mat-menu-item>
+		<mat-icon>power_settings_new</mat-icon>
+		<span>{{ 'TOOLBAR.logout' | translate }}</span>
+	</button>
+</mat-menu>

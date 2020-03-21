@@ -7,6 +7,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthService } from './services/auth.service';
+import { UserService } from './services/user.service';
+import { StorageService } from './services/storage.service';
 
 @NgModule({
 	imports: [
@@ -20,6 +23,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 		MaterialModule,
 	],
 	providers: [
+		AuthService,
+		UserService,
+		StorageService,
 		GameService,
 		HandService
 	],

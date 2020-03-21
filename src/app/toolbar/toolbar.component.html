@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+	<header class="w-100 d-flex justify-content-between white-text">
+		<div class="pointer d-flex align-items-center"
+		     routerLink="/home">
+			<img alt="Cards Logo"
+			     class="mr-3"
+			     src="../../assets/logos/playing-card_32.png">
+			<span>Play Tarot IO</span>
+		</div>
+		<div *ngIf="(currentUser$ | async) as currentUser; else connect">
+			<app-user-menu [user]="currentUser"></app-user-menu>
+		</div>
+	</header>
+</mat-toolbar>
+<ng-template #connect>
+	<app-connect></app-connect>
+</ng-template>

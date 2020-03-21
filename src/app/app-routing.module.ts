@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeModule } from './home/home.module';
 import { GameModule } from './game/game.module';
+import { RegisterModule } from './register/register.module';
 
 const routes: Routes = [
 	{
@@ -11,6 +12,10 @@ const routes: Routes = [
 	{
 		path: 'game',
 		loadChildren: () => import('./game/game.module').then((m: { GameModule: GameModule }) => m.GameModule)
+	},
+	{
+		path: 'register',
+		loadChildren: () => import('./register/register.module').then((m: { RegisterModule: RegisterModule }) => m.RegisterModule)
 	},
 	{
 		path: '',
