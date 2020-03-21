@@ -4,13 +4,16 @@
 		"logout": "Déconnexion"
 	},
 	"HOME": {
-		"playAnonymous": "Jouer une partie rapide",
-		"trySignIn": "Ou connectez-vous pour gardez une trace de vos scores"
+		"playAnonymous": "Commencer une partie",
+		"trySignIn": "Connectez-vous pour gardez une trace de vos scores"
 	},
 	"GAME": {
 		"start": "Commencer la partie"
 	},
 	"SHARED": {
 		"facebookConnect": "Se connecter avec facebook"
+	},
+	"SNACKBAR": {
+		"queueSuccess": "Vous avez été ajouté à la file d'attente pour rejoindre une partie. Veuillez patienter."
 	}
 }

@@ -10,6 +10,23 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { StorageService } from './services/storage.service';
+import { QueueRepository } from './repositories/queue.repository';
+import { QueueService } from './services/queue.service';
+import { SnackbarService } from './services/snackbar.service';
+
+const SERVICES: any[] = [
+	AuthService,
+	UserService,
+	StorageService,
+	SnackbarService,
+	QueueService,
+	GameService,
+	HandService
+];
+
+const REPOSITORIES: any[] = [
+	QueueRepository
+];
 
 @NgModule({
 	imports: [
@@ -23,11 +40,8 @@ import { StorageService } from './services/storage.service';
 		MaterialModule,
 	],
 	providers: [
-		AuthService,
-		UserService,
-		StorageService,
-		GameService,
-		HandService
+		...SERVICES,
+		...REPOSITORIES
 	],
 })
 export class CoreModule {

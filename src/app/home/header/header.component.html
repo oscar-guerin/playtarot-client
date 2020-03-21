@@ -1,19 +1,18 @@
 <div class="d-flex justify-content-center align-items-center"
-	 id="header-wrapper">
+     id="header-wrapper">
 	<mat-card>
 		<mat-card-content>
 			<div class="p-4">
 				<div class="row d-flex justify-content-center pb-2">
 					<button color="accent"
-							mat-flat-button
-							routerLink="/game">
+					        (click)="queueService.fivePlayersGameJoinRequest()"
+					        mat-flat-button>
 						{{ 'HOME.playAnonymous' | translate }}
 					</button>
 				</div>
-				<div class="row d-flex justify-content-center">
+				<div *ngIf="!(currentUser$ | async)"
+				     class="row d-flex justify-content-center">
 					<span>{{ 'HOME.trySignIn' | translate }}</span>
-				</div>
-				<div class="row">
 				</div>
 			</div>
 		</mat-card-content>
