@@ -1,9 +1,15 @@
-/** @deprecated */
-export class User {
-	public uid: string;
-	public username: string;
+import { User } from 'firebase';
 
-	public constructor(data: Partial<User>) {
+export class AppUser {
+	public uid: string;
+	public displayName: string;
+	public avatarUrl: string;
+
+	public constructor(data: Partial<AppUser> = {}) {
 		Object.assign(this, data);
+	}
+
+	public static fromFirestoreUser(firestoreUser: User): AppUser {
+		return new AppUser(firestoreUser);
 	}
 }

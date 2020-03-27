@@ -1,8 +1,8 @@
-import { User } from './user.model';
+import { AppUser } from './user.model';
 import { PlayerDeal } from './player-deal.model';
 
 export class Player {
-	public user: User;
+	public user: AppUser;
 	public playerDeal: PlayerDeal;
 	public position: number;
 
