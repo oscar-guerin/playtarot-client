@@ -10,4 +10,7 @@ export const environment: any = {
 		appId: '1:57461505981:web:b382d0b933d5f787269cd4',
 		measurementId: 'G-RYR7Z8P6N3'
 	},
+	api: {
+		url: 'http://localhost:5001/playtarot-io/us-central1/api'
+	}
 };

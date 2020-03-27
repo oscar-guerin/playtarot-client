@@ -9,7 +9,7 @@ export class AppUser {
 		Object.assign(this, data);
 	}
 
-	public static fromFirestoreUser(firestoreUser: User): AppUser {
-		return new AppUser(firestoreUser);
+	public static fromFirebaseUser(firebaseUser: User): AppUser {
+		return new AppUser(firebaseUser);
 	}
 }
