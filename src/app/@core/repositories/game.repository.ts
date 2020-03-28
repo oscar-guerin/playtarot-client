@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import 'firebase/firestore';
 import { HttpRepository } from './http.repository';
 import { HttpClient } from '@angular/common/http';
+import { Game } from '../models/game.model';
 
 @Injectable()
-export class GameRepository extends HttpRepository<any> {
+export class GameRepository extends HttpRepository<Game> {
 
 	protected url: string = 'game';
 

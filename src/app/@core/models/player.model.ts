@@ -1,10 +1,7 @@
-import { AppUser } from './user.model';
-import { PlayerDeal } from './player-deal.model';
-
 export class Player {
-	public user: AppUser;
-	public playerDeal: PlayerDeal;
-	public position: number;
+	public userUid: string;
+	public userAvatarUrl: string;
+	public userDisplayName: string;
 
 	public constructor(data: Partial<Player>) {
 		Object.assign(this, data);

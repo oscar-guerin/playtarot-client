@@ -3,7 +3,7 @@ import { Hand } from '../@core/models/hand.model';
 import { Card } from '../@core/models/cards/card.model';
 import { GameService } from '../@core/services/game.service';
 import { Observable, of } from 'rxjs';
-import { filter, flatMap, map, tap } from 'rxjs/operators';
+import { map, tap } from 'rxjs/operators';
 import { PlayerDeal } from '../@core/models/player-deal.model';
 import { Player } from '../@core/models/player.model';
 
@@ -37,18 +37,18 @@ export class GameComponent implements OnInit {
 			map((playerDeal: PlayerDeal) => new Hand(playerDeal.playerCards))
 		);
 
-		const relativelyPositionedPlayer$: Observable<Player> = this.gameService.playersEvent().pipe(
-			map((players: Player[]) => {
-				const southPlayerPosition: number = players[0].position;
-
-				return players.map((player: Player) => player.merge({position: player.position - southPlayerPosition}));
-			}),
-			flatMap((x: Player[]) => x),
-		);
-		this.westPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === -1));
-		this.northWestPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === -2));
-		this.eastPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === 1));
-		this.northEastPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === 2));
+		// const relativelyPositionedPlayer$: Observable<Player> = this.gameService.playersEvent().pipe(
+		// 	map((players: Player[]) => {
+		// 		const southPlayerPosition: number = players[0].position;
+		//
+		// 		return players.map((player: Player) => player.merge({position: player.position - southPlayerPosition}));
+		// 	}),
+		// 	flatMap((x: Player[]) => x),
+		// );
+		// this.westPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === -1));
+		// this.northWestPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === -2));
+		// this.eastPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === 1));
+		// this.northEastPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === 2));
 	}
 
 	public ngOnInit(): void {

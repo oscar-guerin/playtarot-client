@@ -3,6 +3,7 @@ import { GameRepository } from '../repositories/game.repository';
 import { Subject } from 'rxjs';
 import { UserService } from './user.service';
 import { SnackbarService } from './snackbar.service';
+import { Game } from '../models/game.model';
 
 @Injectable()
 export class GameAffectationService {
@@ -20,7 +21,9 @@ export class GameAffectationService {
 		// ).subscribe(() => this.snackbarService.info('queueSuccess'));
 	}
 
-	public fivePlayersGameJoinRequest(): void {
-		this.joinRequest$.next(5);
+	public quickGame(): void {
+		this.gameRepository.save(new Game({
+			slots: 1112
+		})).subscribe();
 	}
 }
