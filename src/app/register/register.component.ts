@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../@core/services/auth.service';
-import UserCredential = firebase.auth.UserCredential;
 
 @Component({
 	selector: 'app-register',
@@ -12,8 +11,10 @@ export class RegisterComponent {
 	}
 
 	public signInWithFacebook(): void {
-		this.authService.signInWithFacebook().then(
-			(credentials: UserCredential) => console.log(credentials)
-		);
+		this.authService.signInWithFacebook();
+	}
+
+	public signInWithTwitter(): void {
+		this.authService.signInWithTwitter();
 	}
 }

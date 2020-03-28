@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CoreModule } from '../@core/core.module';
 import { RouterModule } from '@angular/router';
-import { FacebookConnectComponent } from './facebook-connect/facebook-connect.component';
+import { FacebookConnectComponent } from './connect/facebook-connect.component';
+import { TwitterConnectComponent } from './connect/twitter-connect.component';
 
 const EXPORTABLE_COMPONENTS: any[] = [
-	FacebookConnectComponent
+	FacebookConnectComponent,
+	TwitterConnectComponent
 ];
 
 @NgModule({

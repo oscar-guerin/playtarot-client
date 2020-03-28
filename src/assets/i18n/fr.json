@@ -11,7 +11,8 @@
 		"start": "Commencer la partie"
 	},
 	"SHARED": {
-		"facebookConnect": "Se connecter avec facebook"
+		"facebookConnect": "Se connecter avec facebook",
+		"twitterConnect": "Se connecter avec twitter"
 	},
 	"SNACKBAR": {
 		"queueSuccess": "Vous avez été ajouté à la file d'attente pour rejoindre une partie. Veuillez patienter."

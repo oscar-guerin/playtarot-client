@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
+import { ConnectButton } from './connect-button';
 
 @Component({
 	selector: 'app-facebook-connect',
@@ -11,7 +12,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
 		</button>
 	`,
 })
-export class FacebookConnectComponent {
-	@Output()
-	public connect: EventEmitter<void> = new EventEmitter<void>();
+export class FacebookConnectComponent extends ConnectButton {
 }

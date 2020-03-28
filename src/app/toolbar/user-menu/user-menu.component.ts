@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { User } from 'firebase';
 import { AuthService } from '../../@core/services/auth.service';
+import { AppUser } from '../../@core/models/user.model';
 
 @Component({
 	selector: 'app-user-menu',
@@ -10,7 +10,7 @@ import { AuthService } from '../../@core/services/auth.service';
 export class UserMenuComponent {
 
 	@Input()
-	public user: User;
+	public user: AppUser;
 
 	public constructor(public authService: AuthService) {
 	}

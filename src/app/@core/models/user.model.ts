@@ -10,6 +10,10 @@ export class AppUser {
 	}
 
 	public static fromFirebaseUser(firebaseUser: User): AppUser {
-		return new AppUser(firebaseUser);
+		return new AppUser({
+			uid: firebaseUser.uid,
+			displayName: firebaseUser.displayName,
+			avatarUrl: firebaseUser.photoURL
+		});
 	}
 }
