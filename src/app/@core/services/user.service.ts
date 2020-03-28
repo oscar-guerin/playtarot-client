@@ -12,7 +12,7 @@ export class UserService {
 
 	public constructor(private afAuth: AngularFireAuth) {
 		this.user$ = this.afAuth.authState.pipe(
-			map((firebaseUser: User) => AppUser.fromFirebaseUser(firebaseUser))
+			map((firebaseUser: User) => AppUser.fromFirebaseUser(firebaseUser)),
 		);
 	}
 
