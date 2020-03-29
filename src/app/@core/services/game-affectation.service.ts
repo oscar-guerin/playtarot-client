@@ -23,7 +23,17 @@ export class GameAffectationService {
 
 	public quickGame(): void {
 		this.gameRepository.save(new Game({
-			slots: 1112
+			slots: 5,
+			// players: [new Player({
+			// 	userDisplayName: 'Hello World',
+			// 	userAvatarUrl: 'http://www.url.com',
+			// 	userUid: 'dijf103jdofDDAI'
+			// }),
+			// 	new Player({
+			// 		userDisplayName: 'Hello World 2',
+			// 		userAvatarUrl: 'http://www.url.com',
+			// 		userUid: 'dijf103jfofDDAI'
+			// 	})]
 		})).subscribe();
 	}
 }
