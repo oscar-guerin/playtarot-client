@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Game } from '../models/game.model';
 
 @Injectable()
-export class GameRepository extends HttpRepository<Game> {
+export class GameHttpRepository extends HttpRepository<Game> {
 
 	protected url: string = 'game';
 

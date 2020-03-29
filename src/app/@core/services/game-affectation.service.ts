@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { GameRepository } from '../repositories/game.repository';
+import { GameHttpRepository } from '../repositories/game.http.repository';
 import { Subject } from 'rxjs';
 import { UserService } from './user.service';
 import { SnackbarService } from './snackbar.service';
@@ -10,7 +10,7 @@ export class GameAffectationService {
 
 	private joinRequest$: Subject<number> = new Subject<number>();
 
-	public constructor(private readonly gameRepository: GameRepository,
+	public constructor(private readonly gameRepository: GameHttpRepository,
 					   private readonly userService: UserService,
 					   private readonly snackbarService: SnackbarService) {
 		// this.joinRequest$.pipe(

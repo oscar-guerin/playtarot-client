@@ -10,7 +10,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { StorageService } from './services/storage.service';
-import { GameRepository } from './repositories/game.repository';
+import { GameHttpRepository } from './repositories/game.http.repository';
 import { GameAffectationService } from './services/game-affectation.service';
 import { SnackbarService } from './services/snackbar.service';
 
@@ -25,7 +25,7 @@ const SERVICES: any[] = [
 ];
 
 const REPOSITORIES: any[] = [
-	GameRepository
+	GameHttpRepository
 ];
 
 @NgModule({
