@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { GameService } from './services/game.service';
 import { HandService } from './services/hand.service';
-import { MaterialModule } from '../material/material.module';
+import { MaterialModule } from '../@material/material.module';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularFireModule } from '@angular/fire';
@@ -13,6 +13,8 @@ import { StorageService } from './services/storage.service';
 import { GameHttpRepository } from './repositories/game.http.repository';
 import { GameAffectationService } from './services/game-affectation.service';
 import { SnackbarService } from './services/snackbar.service';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { GameRealtimeRepository } from './repositories/game.realtime.repository';
 
 const SERVICES: any[] = [
 	AuthService,
@@ -25,7 +27,8 @@ const SERVICES: any[] = [
 ];
 
 const REPOSITORIES: any[] = [
-	GameHttpRepository
+	GameHttpRepository,
+	GameRealtimeRepository
 ];
 
 @NgModule({
@@ -33,6 +36,7 @@ const REPOSITORIES: any[] = [
 		MaterialModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireAuthModule,
+		AngularFireDatabaseModule
 	],
 	exports: [
 		CommonModule,

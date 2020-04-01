@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../../environments/environment';
 
 export abstract class HttpRepository<T> {
 
-	protected abstract url: string;
+	protected abstract readonly path: string;
 
 	protected constructor(protected readonly http: HttpClient) {
 	}
@@ -18,6 +18,6 @@ export abstract class HttpRepository<T> {
 	}
 
 	private resourceUrl(): string {
-		return `${environment.api.url}/${this.url}`;
+		return `${environment.api.url}/${this.path}`;
 	}
 }
