@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Hand } from '../@core/models/hand.model';
 import { Card } from '../@core/models/cards/card.model';
 import { GameService } from '../@core/services/game.service';
-import { Observable, of } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { PlayerDeal } from '../@core/models/player-deal.model';
+import { Observable } from 'rxjs';
 import { Player } from '../@core/models/player.model';
 
 export enum GameCenterSectionContent {
@@ -19,7 +17,7 @@ export enum GameCenterSectionContent {
 	templateUrl: './game.component.html',
 	styleUrls: ['./game.component.scss']
 })
-export class GameComponent implements OnInit {
+export class GameComponent {
 
 	public northWestPlayer$: Observable<Player>;
 	public northEastPlayer$: Observable<Player>;
@@ -32,10 +30,10 @@ export class GameComponent implements OnInit {
 
 	public constructor(private readonly gameService: GameService) {
 		this.centerSectionContent = GameCenterSectionContent.START;
-		this.hand$ = this.gameService.dealEvent().pipe(
-			tap(() => this.centerSectionContent = GameCenterSectionContent.BOARD),
-			map((playerDeal: PlayerDeal) => new Hand(playerDeal.playerCards))
-		);
+		// this.hand$ = this.gameService.dealEvent().pipe(
+		// 	tap(() => this.centerSectionContent = GameCenterSectionContent.BOARD),
+		// 	map((playerDeal: PlayerDeal) => new Hand(playerDeal.playerCards))
+		// );
 
 		// const relativelyPositionedPlayer$: Observable<Player> = this.gameService.playersEvent().pipe(
 		// 	map((players: Player[]) => {
@@ -51,14 +49,14 @@ export class GameComponent implements OnInit {
 		// this.northEastPlayer$ = relativelyPositionedPlayer$.pipe(filter((player: Player) => player.position === 2));
 	}
 
-	public ngOnInit(): void {
-		this.gameService.join('i');
-	}
+	// public ngOnInit(): void {
+	// 	this.gameService.join('i');
+	// }
 
-	public played(card: Card): void {
-		this.gameService.play(card);
-		this.southCard$ = of(card);
-	}
+	// public played(card: Card): void {
+	// 	this.gameService.play(card);
+	// 	this.southCard$ = of(card);
+	// }
 
 	public requestGameStart(): void {
 		// this.gameService.start();

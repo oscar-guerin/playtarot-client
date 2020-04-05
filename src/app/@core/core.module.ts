@@ -11,24 +11,23 @@ import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
 import { StorageService } from './services/storage.service';
 import { GameHttpRepository } from './repositories/game.http.repository';
-import { GameAffectationService } from './services/game-affectation.service';
 import { SnackbarService } from './services/snackbar.service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
-import { GameRealtimeRepository } from './repositories/game.realtime.repository';
+import { GameFirestoreRepository } from './repositories/game.firestore.repository';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
 
 const SERVICES: any[] = [
 	AuthService,
 	UserService,
 	StorageService,
 	SnackbarService,
-	GameAffectationService,
 	GameService,
 	HandService
 ];
 
 const REPOSITORIES: any[] = [
 	GameHttpRepository,
-	GameRealtimeRepository
+	GameFirestoreRepository
 ];
 
 @NgModule({
@@ -36,6 +35,7 @@ const REPOSITORIES: any[] = [
 		MaterialModule,
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireAuthModule,
+		AngularFirestoreModule,
 		AngularFireDatabaseModule
 	],
 	exports: [

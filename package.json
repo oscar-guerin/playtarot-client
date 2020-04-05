@@ -4,6 +4,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
+		"start2": "ng serve --port 4210",
 		"build": "ng build",
 		"test": "ng test",
 		"lint": "ng lint",
@@ -26,11 +27,13 @@
 		"@ng-bootstrap/schematics": "^2.0.0-alpha.1",
 		"@ngx-translate/core": "^12.1.2",
 		"@ngx-translate/http-loader": "^4.0.0",
+		"@types/lodash": "^4.14.149",
 		"@witty-services/rxjs-common": "^1.0.5",
 		"bootstrap": "^4.4.1",
 		"firebase": "^7.12.0",
 		"font-awesome": "^4.7.0",
 		"jquery": "^3.4.1",
+		"lodash": "^4.17.15",
 		"rxjs": "~6.5.4",
 		"tslib": "^1.10.0",
 		"zone.js": "~0.10.2"

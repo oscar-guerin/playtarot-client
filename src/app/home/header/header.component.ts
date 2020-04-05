@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { UserService } from '../../@core/services/user.service';
 import { Observable } from 'rxjs';
 import { AppUser } from '../../@core/models/user.model';
-import { GameAffectationService } from '../../@core/services/game-affectation.service';
+import { GameService } from '../../@core/services/game.service';
+import { Game } from '../../@core/models/game/game.model';
 
 @Component({
 	selector: 'app-header',
@@ -14,7 +15,15 @@ export class HeaderComponent {
 	public currentUser$: Observable<AppUser>;
 
 	public constructor(private readonly userService: UserService,
-					   public readonly gameAffectationService: GameAffectationService) {
+					   public readonly gameService: GameService) {
 		this.currentUser$ = this.userService.getCurrentUser();
+	}
+
+	public startGame(slots: number): void {
+		this.gameService.quickGame(slots).subscribe(
+			(game: Game) => {
+				console.log(game);
+			}
+		);
 	}
 }
