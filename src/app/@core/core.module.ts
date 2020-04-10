@@ -15,6 +15,8 @@ import { SnackbarService } from './services/snackbar.service';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { GameFirestoreRepository } from './repositories/game.firestore.repository';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './interceptors/token.interceptor';
 
 const SERVICES: any[] = [
 	AuthService,
@@ -28,6 +30,14 @@ const SERVICES: any[] = [
 const REPOSITORIES: any[] = [
 	GameHttpRepository,
 	GameFirestoreRepository
+];
+
+const INTERCEPTORS: any[] = [
+	{
+		provide: HTTP_INTERCEPTORS,
+		useClass: TokenInterceptor,
+		multi: true
+	}
 ];
 
 @NgModule({
@@ -45,7 +55,8 @@ const REPOSITORIES: any[] = [
 	],
 	providers: [
 		...SERVICES,
-		...REPOSITORIES
+		...REPOSITORIES,
+		...INTERCEPTORS
 	],
 })
 export class CoreModule {

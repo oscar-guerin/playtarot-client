@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
-import { from } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -20,6 +20,10 @@ export class AuthService {
 		from(this.afAuth.signInWithPopup(
 			new firebase.auth.TwitterAuthProvider()
 		));
+	}
+
+	public getAuthToken(): Observable<string> {
+		return this.afAuth.idToken;
 	}
 
 	public signOut(): void {
