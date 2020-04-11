@@ -1,0 +1,12 @@
+<nav color="accent"
+     mat-tab-nav-bar>
+	<a #rla="routerLinkActive"
+	   *ngFor="let link of links"
+	   [active]="rla.isActive"
+	   [routerLink]="link.link"
+	   class="tabs-link"
+	   mat-tab-link
+	   routerLinkActive>
+		{{ link.label | translate }}
+	</a>
+</nav>

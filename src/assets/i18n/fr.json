@@ -1,5 +1,7 @@
 {
 	"TOOLBAR": {
+		"gameMenu": "Partie en cours",
+		"leaderboardMenu": "Classement",
 		"register": "Connectez-vous",
 		"logout": "Déconnexion"
 	},

@@ -3,7 +3,6 @@ import { UserService } from '../../@core/services/user.service';
 import { Observable } from 'rxjs';
 import { AppUser } from '../../@core/models/user.model';
 import { GameService } from '../../@core/services/game.service';
-import { Game } from '../../@core/models/game/game.model';
 
 @Component({
 	selector: 'app-header',
@@ -20,10 +19,6 @@ export class HeaderComponent {
 	}
 
 	public startGame(slots: number): void {
-		this.gameService.quickGame(slots).subscribe(
-			(game: Game) => {
-				console.log(game);
-			}
-		);
+		this.gameService.quickGame(slots);
 	}
 }

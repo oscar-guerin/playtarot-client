@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { merge, Observable } from 'rxjs';
+import { EMPTY, merge, Observable } from 'rxjs';
 import { AppUser } from '../models/user.model';
 import { GameHttpRepository } from '../repositories/game.http.repository';
 import { GameFirestoreRepository } from '../repositories/game.firestore.repository';
@@ -15,6 +15,7 @@ import { DocumentReference } from '../dto/document-reference';
 export class GameService {
 
 	private currentUser: AppUser;
+	private currentGame$: Observable<Game> = EMPTY;
 
 	public constructor(private readonly gameHttpRepository: GameHttpRepository,
 					   private readonly gameFirestoreRepository: GameFirestoreRepository,
@@ -22,7 +23,7 @@ export class GameService {
 		this.userService.getCurrentUser().subscribe((user: AppUser) => this.currentUser = user);
 	}
 
-	public quickGame(slots: number): Observable<Game> {
+	public quickGame(slots: number): void {
 		const foundGameReference$: Observable<DocumentReference> = this.gameFirestoreRepository.findWaitingGameReference().pipe(
 			first()
 		);
@@ -37,7 +38,11 @@ export class GameService {
 			switchMapTo(this.createGame(slots))
 		);
 
-		return merge(joinFoundGame$, createGame$);
+		this.currentGame$ = merge(joinFoundGame$, createGame$);
+	}
+
+	public getCurrentGame(): Observable<Game> {
+		return this.currentGame$;
 	}
 
 	private createGame(slots: number): Observable<Game> {

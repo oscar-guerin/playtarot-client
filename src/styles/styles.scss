@@ -16,7 +16,23 @@ body {
 	cursor: pointer;
 }
 
+header {
+	height: 48px;
+	background-color: $primary;
+}
+
 .white-text {
 	color: white;
+}
+
+.tabs-link {
+	color: white;
+	opacity: 1 !important;
+	text-decoration: none;
+}
+
+.tabs-link:hover {
+	color: white;
+	text-decoration: none;
 }
 
