@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { GameService } from '../../@core/services/game.service';
+import { takeUntil } from 'rxjs/operators';
+import { ObservableDestroy } from '../../@core/observable-destroy';
+import { Game } from '../../@core/models/game/game.model';
+import { head } from 'lodash';
 
 interface TabsLink {
 	link: string;
@@ -9,19 +14,30 @@ interface TabsLink {
 	selector: 'app-tabs',
 	templateUrl: './tabs.component.html'
 })
-export class TabsComponent {
+export class TabsComponent extends ObservableDestroy {
 
 	public links: TabsLink[] = [
-		{
-			link: '/game',
-			label: 'TOOLBAR.gameMenu'
-		},
 		{
 			link: '/leaderboard',
 			label: 'TOOLBAR.leaderboardMenu'
 		},
 	];
 
-	public constructor() {
+	public constructor(private readonly gameService: GameService) {
+		super();
+		this.gameService.getCurrentGame().pipe(
+			takeUntil(this.onDestroy$),
+		).subscribe((game: Game) => {
+			if (game != null) {
+				this.links.unshift({
+					link: '/game',
+					label: 'TOOLBAR.gameMenu'
+				});
+			} else {
+				if (head(this.links).link === '/game') {
+					this.links.shift();
+				}
+			}
+		});
 	}
 }

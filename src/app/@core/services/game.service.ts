@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { EMPTY, merge, Observable } from 'rxjs';
+import { merge, Observable } from 'rxjs';
 import { AppUser } from '../models/user.model';
 import { GameHttpRepository } from '../repositories/game.http.repository';
 import { GameFirestoreRepository } from '../repositories/game.firestore.repository';
@@ -15,7 +15,7 @@ import { DocumentReference } from '../dto/document-reference';
 export class GameService {
 
 	private currentUser: AppUser;
-	private currentGame$: Observable<Game> = EMPTY;
+	private currentGame$: Observable<Game>;
 
 	public constructor(private readonly gameHttpRepository: GameHttpRepository,
 					   private readonly gameFirestoreRepository: GameFirestoreRepository,
