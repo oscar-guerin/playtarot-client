@@ -17,6 +17,8 @@ import { GameFirestoreRepository } from './repositories/game.firestore.repositor
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { NgxRepositoryModule } from 'ngx-repository';
+import { UserFirestoreRepository } from './repositories/user.firestore.repository';
 
 const SERVICES: any[] = [
 	AuthService,
@@ -29,7 +31,8 @@ const SERVICES: any[] = [
 
 const REPOSITORIES: any[] = [
 	GameHttpRepository,
-	GameFirestoreRepository
+	GameFirestoreRepository,
+	UserFirestoreRepository
 ];
 
 const INTERCEPTORS: any[] = [
@@ -46,7 +49,8 @@ const INTERCEPTORS: any[] = [
 		AngularFireModule.initializeApp(environment.firebase),
 		AngularFireAuthModule,
 		AngularFirestoreModule,
-		AngularFireDatabaseModule
+		AngularFireDatabaseModule,
+		NgxRepositoryModule
 	],
 	exports: [
 		CommonModule,

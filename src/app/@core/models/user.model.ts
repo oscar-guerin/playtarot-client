@@ -4,6 +4,7 @@ export class AppUser {
 	public uid: string;
 	public displayName: string;
 	public avatarUrl: string;
+	public currentGameId: number;
 
 	public constructor(data: Partial<AppUser> = {}) {
 		Object.assign(this, data);
@@ -15,5 +16,11 @@ export class AppUser {
 			displayName: firebaseUser.displayName,
 			avatarUrl: firebaseUser.photoURL
 		}) : null;
+	}
+
+	public merge(user: Partial<AppUser>): AppUser {
+		Object.assign(this, user);
+
+		return this;
 	}
 }

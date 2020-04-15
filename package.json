@@ -34,6 +34,7 @@
 		"font-awesome": "^4.7.0",
 		"jquery": "^3.4.1",
 		"lodash": "^4.17.15",
+		"ngx-repository": "^0.7.0",
 		"rxjs": "~6.5.4",
 		"tslib": "^1.10.0",
 		"zone.js": "~0.10.2"

@@ -12,7 +12,7 @@ import { head } from 'lodash';
 import { DocumentReference } from '../dto/document-reference';
 
 @Injectable()
-export class GameFirestoreRepository extends FirestoreRepository<CreateGameDto> {
+export class GameFirestoreRepository extends FirestoreRepository<CreateGameDto> { // FIXME model issue
 	protected readonly path: string = 'games';
 
 	public constructor(private readonly firestore: AngularFirestore) {
