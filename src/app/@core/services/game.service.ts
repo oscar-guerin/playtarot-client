@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { merge, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AppUser } from '../models/user.model';
 import { GameHttpRepository } from '../repositories/game.http.repository';
 import { GameFirestoreRepository } from '../repositories/game.firestore.repository';
@@ -14,13 +14,13 @@ import { DocumentReference } from '../dto/document-reference';
 @Injectable()
 export class GameService {
 
-	private currentUser: AppUser;
+	private currentUser$: Observable<AppUser>;
 	private currentGame$: Observable<Game>;
 
 	public constructor(private readonly gameHttpRepository: GameHttpRepository,
 					   private readonly gameFirestoreRepository: GameFirestoreRepository,
 					   private readonly userService: UserService) {
-		this.userService.getCurrentUser().subscribe((user: AppUser) => this.currentUser = user);
+		this.currentUser$ = this.userService.getCurrentUser();
 	}
 
 	public quickGame(slots: number): void {
@@ -38,7 +38,7 @@ export class GameService {
 			switchMapTo(this.createGame(slots))
 		);
 
-		this.currentGame$ = merge(joinFoundGame$, createGame$);
+		// this.currentGame$ = merge(joinFoundGame$, createGame$); // TODO update user in firestore
 	}
 
 	public getCurrentGame(): Observable<Game> {
@@ -46,14 +46,18 @@ export class GameService {
 	}
 
 	private createGame(slots: number): Observable<Game> {
-		return this.gameHttpRepository.create(CreateGameDto.build(this.currentUser, slots)).pipe(
-			switchMap((gameReference: DocumentReference) => this.gameFirestoreRepository.watchGameByReference(gameReference))
+		return this.currentUser$.pipe(
+			switchMap((currentUser: AppUser) => this.gameHttpRepository.create(CreateGameDto.build(currentUser, slots)).pipe(
+				switchMap((gameReference: DocumentReference) => this.gameFirestoreRepository.watchGameByReference(gameReference))
+			))
 		);
 	}
 
 	private joinGame(gameReference: DocumentReference): Observable<Game> {
-		return this.gameHttpRepository.update(gameReference, UpdateGameDto.build(this.currentUser)).pipe(
-			switchMapTo(this.gameFirestoreRepository.watchGameByReference(gameReference))
+		return this.currentUser$.pipe(
+			switchMap((currentUser: AppUser) => this.gameHttpRepository.update(gameReference, UpdateGameDto.build(currentUser)).pipe(
+				switchMapTo(this.gameFirestoreRepository.watchGameByReference(gameReference))
+			))
 		);
 	}
 }
