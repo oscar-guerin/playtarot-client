@@ -16,7 +16,7 @@ export class GameHttpRepository extends HttpRepository {
 		super(http);
 	}
 
-	public create(createGameDto: CreateGameDto): Observable<DocumentReference> {
+	public create(createGameDto: CreateGameDto): Observable<DocumentReference> { // TODO remove document ref
 		return this.http.post<DocumentReference>(this.resourceUrl(), createGameDto);
 	}
 

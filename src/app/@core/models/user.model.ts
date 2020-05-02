@@ -4,7 +4,7 @@ export class AppUser {
 	public uid: string;
 	public displayName: string;
 	public avatarUrl: string;
-	public currentGameId: number;
+	public currentGameId: string; // TODO change to number ?
 
 	public constructor(data: Partial<AppUser> = {}) {
 		Object.assign(this, data);

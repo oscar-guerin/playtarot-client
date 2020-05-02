@@ -21,6 +21,9 @@ export class GameService {
 					   private readonly gameFirestoreRepository: GameFirestoreRepository,
 					   private readonly userService: UserService) {
 		this.currentUser$ = this.userService.getCurrentUser();
+		this.currentGame$ = this.currentUser$.pipe(
+			switchMap((currentUser: AppUser) => this.gameFirestoreRepository.watchGameById(currentUser.currentGameId))
+		);
 	}
 
 	public quickGame(slots: number): void {
@@ -48,15 +51,15 @@ export class GameService {
 	private createGame(slots: number): Observable<Game> {
 		return this.currentUser$.pipe(
 			switchMap((currentUser: AppUser) => this.gameHttpRepository.create(CreateGameDto.build(currentUser, slots)).pipe(
-				switchMap((gameReference: DocumentReference) => this.gameFirestoreRepository.watchGameByReference(gameReference))
+				switchMap((gameReference: DocumentReference) => this.gameFirestoreRepository.watchGameById(gameReference.id))
 			))
 		);
 	}
 
-	private joinGame(gameReference: DocumentReference): Observable<Game> {
+	private joinGame(gameReference: DocumentReference): Observable<Game> { //  TODO remove document ref
 		return this.currentUser$.pipe(
 			switchMap((currentUser: AppUser) => this.gameHttpRepository.update(gameReference, UpdateGameDto.build(currentUser)).pipe(
-				switchMapTo(this.gameFirestoreRepository.watchGameByReference(gameReference))
+				switchMapTo(this.gameFirestoreRepository.watchGameById(gameReference.id))
 			))
 		);
 	}

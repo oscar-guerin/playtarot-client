@@ -19,8 +19,8 @@ export class GameFirestoreRepository extends FirestoreRepository<CreateGameDto> 
 		super();
 	}
 
-	public watchGameByReference(gameReference: DocumentReference): Observable<Game> {
-		return this.firestore.collection(this.path).doc<Game>(gameReference.id).valueChanges();
+	public watchGameById(gameId: string): Observable<Game> {
+		return this.firestore.collection(this.path).doc<Game>(gameId).valueChanges();
 	}
 
 	public findWaitingGameReference(): Observable<DocumentReference> {
