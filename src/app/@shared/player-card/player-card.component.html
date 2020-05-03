@@ -1,5 +1,7 @@
 <mat-card>
 	<div *ngIf="player">
+		<app-avatar [url]="player.userAvatarUrl"
+		            class="mr-3"></app-avatar>
 		{{ player?.userDisplayName }}
 	</div>
 </mat-card>
