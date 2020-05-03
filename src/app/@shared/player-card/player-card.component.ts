@@ -3,10 +3,9 @@ import { Player } from '../../@core/models/player.model';
 
 @Component({
 	selector: 'app-player',
-	templateUrl: './player.component.html',
-	styleUrls: ['./player.component.scss']
+	templateUrl: './player-card.component.html',
 })
-export class PlayerComponent {
+export class PlayerCardComponent {
 
 	@Input() public player: Player;
 }

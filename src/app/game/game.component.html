@@ -1,3 +1,19 @@
+<app-player [player]="northWestPlayer$ | async"
+            class="position-fixed"
+            style="top: 64px; left: 20%">
+</app-player>
+<app-player [player]="northEastPlayer$ | async"
+            class="position-fixed"
+            style="top: 64px; right: 20%">
+</app-player>
+<app-player [player]="westPlayer$ | async"
+            class="position-fixed"
+            style="left: 0; top: 40%">
+</app-player>
+<app-player [player]="eastPlayer$ | async"
+            class="position-fixed"
+            style="right: 0; top: 40%">
+</app-player>
 <!--<div id="game-wrapper">-->
 <!--	<div class="row game-top d-flex justify-content-around">-->
 <!--		<app-player [player]="northWestPlayer$ | async">-->
@@ -9,8 +25,7 @@
 <!--		<app-player [player]="westPlayer$ | async">-->
 <!--		</app-player>-->
 <!--		<div>-->
-<!--			<app-start (gameStart)="requestGameStart()"-->
-<!--					   *ngIf="centerSectionContent === 'start'">-->
+<!--			<app-start *ngIf="centerSectionContent === 'start'">-->
 <!--			</app-start>-->
 <!--			<app-board *ngIf="centerSectionContent === 'board'"-->
 <!--					   [eastCard]="southCard$ | async"-->
@@ -24,8 +39,7 @@
 <!--		</app-player>-->
 <!--	</div>-->
 <!--	<div class="row game-bottom justify-content-center">-->
-<!--		<app-hand (played)="played($event)"-->
-<!--				  [hand]="(hand$ | async)">-->
+<!--		<app-hand [hand]="(hand$ | async)">-->
 <!--		</app-hand>-->
 <!--	</div>-->
 

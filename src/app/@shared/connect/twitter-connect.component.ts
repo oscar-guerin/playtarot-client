@@ -12,5 +12,5 @@ import { ConnectButton } from './connect-button';
 		</button>
 	`,
 })
-export class TwitterConnectComponent extends ConnectButton {
+export class TwitterConnectComponent extends ConnectButton { // TODO remove this shit
 }

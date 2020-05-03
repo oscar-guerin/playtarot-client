@@ -19,7 +19,6 @@ export enum GameCenterSectionContent {
 @Component({
 	selector: 'app-game',
 	templateUrl: './game.component.html',
-	styleUrls: ['./game.component.scss']
 })
 export class GameComponent {
 
@@ -37,27 +36,34 @@ export class GameComponent {
 		const game$: Observable<Game> = this.gameService.getCurrentGame();
 		const user$: Observable<AppUser> = this.userService.getCurrentUser();
 		const players$: Observable<Player[]> = game$.pipe(
-			map((game: Game) => game.players)
+			map((game: Game) => game.players),
 		);
-		const userPosition$: Observable<number> = combineLatest([user$, players$]).pipe(
+		const rearrangedPlayers$: Observable<Player[]> = combineLatest([user$, players$]).pipe(
 			map(([user, players]: [AppUser, Player[]]) =>
-				players.findIndex((player: Player) => player.userUid === user.uid)
-			)
+				this.reorderPlayersArray(players, user)
+			),
 		);
 
-		this.westPlayer$ = this.placePlayerOnBoard(players$, userPosition$, -1);
-		this.eastPlayer$ = this.placePlayerOnBoard(players$, userPosition$, +1);
-		this.northWestPlayer$ = this.placePlayerOnBoard(players$, userPosition$, -2);
-		this.northEastPlayer$ = this.placePlayerOnBoard(players$, userPosition$, +2);
+		this.eastPlayer$ = this.placePlayerOnBoard(players$, 1);
+		this.northEastPlayer$ = this.placePlayerOnBoard(players$, 2);
+		this.northWestPlayer$ = this.placePlayerOnBoard(players$, 3);
+		this.westPlayer$ = this.placePlayerOnBoard(players$, 4);
 
 		this.centerSectionContent = GameCenterSectionContent.START;
 	}
 
-	private placePlayerOnBoard(players$: Observable<Player[]>, userPosition$: Observable<number>, relativePos: number): Observable<Player> {
-		return combineLatest([players$, userPosition$]).pipe(
-			map(([players, position]: [Player[], number]) =>
-				players[position + relativePos]
-			)
+	private placePlayerOnBoard(players$: Observable<Player[]>, position: number): Observable<Player> {
+		return players$.pipe(
+			map((players: Player[]) => players[position])
 		);
+	}
+
+	private reorderPlayersArray(players: Player[], currentUser: AppUser): Player[] {
+		const currentUserIndex: number = players.findIndex((player: Player) => player.userUid === currentUser.uid);
+		if (!currentUserIndex) {
+			return [players[currentUserIndex], ...players.slice(0, currentUserIndex), ...players.slice(currentUserIndex + 1)];
+		}
+
+		return players;
 	}
 }
