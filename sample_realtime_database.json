@@ -1,0 +1,31 @@
+{
+	"channels": {
+		"ysYC934k47UitJU5HJnJ": {
+			"0": {
+				"event": "BID",
+				"playerPosition": "0",
+				"value": "PASS"
+			},
+			"1": {
+				"event": "BID",
+				"playerPosition": "1",
+				"value": "TAKE"
+			},
+			"2": {
+				"event": "BID",
+				"playerPosition": "2",
+				"value": "PASS"
+			},
+			"3": {
+				"event": "BID",
+				"playerPosition": "3",
+				"value": "PUSH"
+			},
+			"4": {
+				"event": "BID",
+				"playerPosition": "4",
+				"value": "GUARD"
+			}
+		}
+	}
+}

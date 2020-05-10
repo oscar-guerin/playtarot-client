@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { Hand } from '../@core/models/hand.model';
-import { Card } from '../@core/models/cards/card.model';
+import { Card } from '../@core/models/game/card.model';
 import { GameService } from '../@core/services/game.service';
 import { combineLatest, Observable } from 'rxjs';
 import { Player } from '../@core/models/player.model';
-import { Game } from '../@core/models/game/game.model';
+import { Game } from '../@core/models/game/game';
 import { map } from 'rxjs/operators';
 import { UserService } from '../@core/services/user.service';
 import { AppUser } from '../@core/models/user.model';
@@ -61,7 +61,7 @@ export class GameComponent {
 	private reorderPlayersArray(players: Player[], currentUser: AppUser): Player[] {
 		const currentUserIndex: number = players.findIndex((player: Player) => player.userUid === currentUser.uid);
 		if (!currentUserIndex) {
-			return [players[currentUserIndex], ...players.slice(0, currentUserIndex), ...players.slice(currentUserIndex + 1)];
+			return [players[currentUserIndex], ...players.slice(currentUserIndex + 1), ...players.slice(0, currentUserIndex)];
 		}
 
 		return players;

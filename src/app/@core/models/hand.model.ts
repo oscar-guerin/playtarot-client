@@ -1,4 +1,4 @@
-import { Card } from './cards/card.model';
+import { Card } from './game/card.model';
 import { fill } from 'lodash';
 
 export class Hand extends Array<Card> {

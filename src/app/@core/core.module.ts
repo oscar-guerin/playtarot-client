@@ -19,6 +19,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './interceptors/token.interceptor';
 import { NgxRepositoryModule } from 'ngx-repository';
 import { UserFirestoreRepository } from './repositories/user.firestore.repository';
+import { ChannelService } from './services/channel.service';
 
 const SERVICES: any[] = [
 	AuthService,
@@ -26,7 +27,8 @@ const SERVICES: any[] = [
 	StorageService,
 	SnackbarService,
 	GameService,
-	HandService
+	HandService,
+	ChannelService
 ];
 
 const REPOSITORIES: any[] = [

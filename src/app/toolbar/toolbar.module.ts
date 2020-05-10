@@ -5,11 +5,13 @@ import { UserMenuComponent } from './user-menu/user-menu.component';
 import { ConnectComponent } from './connect/connect.component';
 import { RouterModule } from '@angular/router';
 import { TabsComponent } from './tabs/tabs.component';
+import { SharedModule } from '../@shared/shared.module';
 
 @NgModule({
 	imports: [
 		CoreModule,
-		RouterModule
+		RouterModule,
+		SharedModule
 	],
 	exports: [ToolbarComponent],
 	declarations: [

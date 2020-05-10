@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Card } from '../../../@core/models/cards/card.model';
+import { Card } from '../../../@core/models/game/card.model';
 
 @Component({
 	selector: 'app-board',

@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 
+/** @deprecated */
 export abstract class HttpRepository {
 
 	protected abstract readonly path: string;

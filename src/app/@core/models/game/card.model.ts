@@ -1,6 +1,6 @@
-import { ColorCardValue } from './color-card-value.enum';
-import { Suit } from './suit.enum';
-import { TrumpCardValue } from './trump-card-value.enum';
+import { ColorCardValue } from '../../enumerations/color-card-value.enum';
+import { Suit } from '../../enumerations/suit.enum';
+import { TrumpCardValue } from '../../enumerations/trump-card-value.enum';
 
 export class Card {
 	public colorCardValue?: ColorCardValue;

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { GameService } from '../../@core/services/game.service';
 import { ObservableDestroy } from '../../@core/observable-destroy';
 import { takeUntil } from 'rxjs/operators';
-import { Game } from '../../@core/models/game/game.model';
+import { Game } from '../../@core/models/game/game';
 import { head } from 'lodash';
 
 interface TabsLink {

@@ -1,7 +1,7 @@
 import { Component, DoCheck, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Hand } from '../../@core/models/hand.model';
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Card } from '../../@core/models/cards/card.model';
+import { Card } from '../../@core/models/game/card.model';
 
 @Component({
 	selector: 'app-hand',

@@ -1,8 +1,8 @@
 import { Player } from '../player.model';
-import { GameStatus } from './game-status.enum';
+import { GameProgressionStatus } from '../../enumerations/game-progression-status.enum';
 
 export class Game {
-	public status: GameStatus;
+	public status: GameProgressionStatus;
 	public slots: number;
 	public players: Player[];
 

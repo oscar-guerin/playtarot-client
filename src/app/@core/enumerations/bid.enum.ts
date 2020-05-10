@@ -1,0 +1,8 @@
+export const enum Bid {
+	PASS = 'PASS',
+	TAKE = 'TAKE',
+	PUSH = 'PUSH',
+	GUARD = 'GUARD',
+	GUARD_WITHOUT = 'GUARD_WITHOUT',
+	GUARD_AGAINST = 'GUARD_AGAINST'
+}

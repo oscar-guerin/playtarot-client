@@ -4,7 +4,7 @@ import { AppUser } from '../models/user.model';
 import { GameHttpRepository } from '../repositories/game.http.repository';
 import { GameFirestoreRepository } from '../repositories/game.firestore.repository';
 import { UserService } from './user.service';
-import { Game } from '../models/game/game.model';
+import { Game } from '../models/game/game';
 import { first, switchMap, switchMapTo } from 'rxjs/operators';
 import { ifNotNull, ifNull } from '@witty-services/rxjs-common';
 import { CreateGameDto } from '../dto/create-game.dto';
@@ -14,8 +14,8 @@ import { DocumentReference } from '../dto/document-reference';
 @Injectable()
 export class GameService {
 
-	private currentUser$: Observable<AppUser>;
-	private currentGame$: Observable<Game>;
+	private readonly currentUser$: Observable<AppUser>;
+	private readonly currentGame$: Observable<Game>;
 
 	public constructor(private readonly gameHttpRepository: GameHttpRepository,
 					   private readonly gameFirestoreRepository: GameFirestoreRepository,

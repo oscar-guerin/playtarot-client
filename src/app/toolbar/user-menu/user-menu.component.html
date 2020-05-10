@@ -5,10 +5,7 @@
 		{{ user.displayName }}
 	</span>
 	<!-- TODO use component -->
-	<img [src]="user.avatarUrl"
-	     alt="User avatar"
-	     height="35"
-	     width="35">
+	<app-avatar [url]="user.avatarUrl"></app-avatar>
 </button>
 <mat-menu #userMenu>
 	<button (click)="authService.signOut()"
